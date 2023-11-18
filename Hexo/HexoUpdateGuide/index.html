@@ -1,1 +1,467 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="theme-color" content="#222" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0"><link rel="apple-touch-icon" sizes="180x180" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico"><link rel="icon" type="image/png" sizes="32x32" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico"><link rel="icon" type="image/png" sizes="16x16" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico"><link rel="mask-icon" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico" color="#222"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous"><link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous"><script class="next-config" data-name="main" type="application/json">{"hostname":"zm6666.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script><meta name="description" content="本文采用 CC BY-NC-SA 4.0 协议，转载请注明出处。 很久没提交更新，打开博客一看，果然博客框架更新了很多东西。作为一个强迫症患者，在把这一两年内写的文章都提交之前，把框架统统更新一遍，简单记录一下内容。 配置项中和老版本一致的项目不再一一赘述，仅列举出配置项不同或者失效或者需要使用新的实现方式的功能。   更新 Node.js12$ node --versionv16.17.0 顺"><meta property="og:type" content="article"><meta property="og:title" content="Hexo博客升级6.2.0+Next主题升级8.12.3"><meta property="og:url" content="https://zm6666.top/Hexo/HexoUpdateGuide/index.html"><meta property="og:site_name" content="ZM666"><meta property="og:description" content="本文采用 CC BY-NC-SA 4.0 协议，转载请注明出处。 很久没提交更新，打开博客一看，果然博客框架更新了很多东西。作为一个强迫症患者，在把这一两年内写的文章都提交之前，把框架统统更新一遍，简单记录一下内容。 配置项中和老版本一致的项目不再一一赘述，仅列举出配置项不同或者失效或者需要使用新的实现方式的功能。   更新 Node.js12$ node --versionv16.17.0 顺"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2022-08-23T15:17:12.000Z"><meta property="article:modified_time" content="2022-08-24T12:08:42.926Z"><meta property="article:tag" content="Blog"><meta property="article:tag" content="Hexo"><meta name="twitter:card" content="summary"><link rel="canonical" href="https://zm6666.top/Hexo/HexoUpdateGuide/"><script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zm6666.top/Hexo/HexoUpdateGuide/","path":"Hexo/HexoUpdateGuide/","title":"Hexo博客升级6.2.0+Next主题升级8.12.3"}</script><script class="next-config" data-name="calendar" type="application/json">""</script><title>Hexo博客升级6.2.0+Next主题升级8.12.3 | ZM666</title><noscript><link rel="stylesheet" href="/css/noscript.css"></noscript></head><body itemscope itemtype="http://schema.org/WebPage" class="use-motion"><div class="headband"></div><main class="main"><div class="column"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container"><div class="site-nav-toggle"><div class="toggle" aria-label="切换导航栏" role="button"><span class="toggle-line"></span><span class="toggle-line"></span><span class="toggle-line"></span></div></div><div class="site-meta"><a href="/" class="brand" rel="start"><i class="logo-line"></i><p class="site-title">ZM666</p><i class="logo-line"></i></a></div><div class="site-nav-right"><div class="toggle popup-trigger" aria-label="搜索" role="button"></div></div></div><nav class="site-nav"><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li></ul></nav></header><aside class="sidebar"><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class="sidebar-nav"><li class="sidebar-nav-toc"> 文章目录</li><li class="sidebar-nav-overview"> 站点概览</li></ul><div class="sidebar-panel-container"><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0-Node-js"><span class="nav-number">1.</span> <span class="nav-text">更新 Node.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0-Hexo-%E5%92%8C%E4%B8%BB%E9%A2%98-NexT-%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">更新 Hexo 和主题 NexT 包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">更新配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0Hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">更新Hexo配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0Next%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">更新Next配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE%E5%92%8C%E5%90%8D%E7%A7%B0"><span class="nav-number">3.2.1.</span> <span class="nav-text">文件位置和名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E5%88%B6%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">定制样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valine%E8%AF%84%E8%AE%BA%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">3.2.3.</span> <span class="nav-text">Valine评论（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%85%E8%A8%80%E8%AF%84%E8%AE%BA"><span class="nav-number">3.2.4.</span> <span class="nav-text">畅言评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitTalk-x2F-Utterances%E8%AF%84%E8%AE%BA"><span class="nav-number">3.2.5.</span> <span class="nav-text">GitTalk&#x2F;Utterances评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#live2d"><span class="nav-number">3.2.6.</span> <span class="nav-text">live2d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MathJax%E6%94%AF%E6%8C%81%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">3.2.7.</span> <span class="nav-text">MathJax支持问题（未解决）</span></a></li></ol></li></ol></li></ol></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" alt="" src="https://myblog-1303447677.file.myqcloud.com/BlogFrame/my-avatar.png"><p class="site-author-name" itemprop="name"></p><div class="site-description" itemprop="description"></div></div><div class="site-state-wrap animated"><nav class="site-state"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">13</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">4</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">15</span> <span class="site-state-item-name">标签</span></a></div></nav></div><div class="links-of-author animated"><span class="links-of-author-item"><a href="https://github.com/zhaomin6666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhaomin6666" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:lanmao_1029@163.com" title="E-Mail → mailto:lanmao_1029@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i> E-Mail</a></span></div></div></div></div></aside></div><div class="main-inner post posts-expand"><div class="post-block"><article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://zm6666.top/Hexo/HexoUpdateGuide/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="https://myblog-1303447677.file.myqcloud.com/BlogFrame/my-avatar.png"><meta itemprop="name" content=""></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ZM666"><meta itemprop="description" content=""></span><span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork"><meta itemprop="name" content="Hexo博客升级6.2.0+Next主题升级8.12.3 | ZM666"><meta itemprop="description" content=""></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> Hexo博客升级6.2.0+Next主题升级8.12.3</h1><div class="post-meta-container"><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2022-08-23 23:17:12" itemprop="dateCreated datePublished" datetime="2022-08-23T23:17:12+08:00">2022-08-23</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar-check"></i></span> <span class="post-meta-item-text">更新于</span> <time title="修改时间：2022-08-24 20:08:42" itemprop="dateModified" datetime="2022-08-24T20:08:42+08:00">2022-08-24</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-folder"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span></span><span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv"><span class="post-meta-item-icon"><i class="far fa-eye"></i></span> <span class="post-meta-item-text">阅读次数：</span><span id="busuanzi_value_page_pv"></span></span></div></div></header><div class="post-body" itemprop="articleBody"><ul><li>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议，转载请注明出处。</li><li>很久没提交更新，打开博客一看，果然博客框架更新了很多东西。作为一个强迫症患者，在把这一两年内写的文章都提交之前，把框架统统更新一遍，简单记录一下内容。</li><li>配置项中和老版本一致的项目不再一一赘述，仅列举出配置项不同或者失效或者需要使用新的实现方式的功能。</li></ul><hr><h1 id="更新-Node-js"><a href="#更新-Node-js" class="headerlink" title="更新 Node.js"></a>更新 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node --version</span><br><span class="line">v16.17.0</span><br></pre></td></tr></table></figure><p>顺带更新npm（需要到官网找到对应node版本的npm版本升级）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm --version</span><br><span class="line">v8.15.0</span><br></pre></td></tr></table></figure><h1 id="更新-Hexo-和主题-NexT-包"><a href="#更新-Hexo-和主题-NexT-包" class="headerlink" title="更新 Hexo 和主题 NexT 包"></a>更新 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> 和主题 <a target="_blank" rel="noopener" href="https://github.com/next-theme/">NexT</a> 包</h1><p>由于我的版本和最新的差距太大，索性直接把整个文件夹铲了重新建站。<br><strong>注意：记得保存原仓库的副本，主要是<code>_post/</code>和<code>*.yml</code>文件。</strong><br>首先是重新安装最新的Hexo：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-cli -g</span><br><span class="line">$ cnpm install hexo@6.2.0</span><br><span class="line">$ hexo version</span><br><span class="line">hexo: 6.2.0</span><br><span class="line">hexo-cli: 4.3.0</span><br></pre></td></tr></table></figure><p>对于新版本的next主题可以使用npm方式直接安装了：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-theme-next</span><br></pre></td></tr></table></figure><p>当然，也可以使用git命令将主题下载到<code>themes/next</code>目录下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure><p>安装完成之后找到文件夹下的<code>_config.yml</code>，修改其中的主题为<code>theme: next</code>。此时，博客的next主题就安装成功了。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  ==================================</span><br><span class="line">  ███╗   ██╗███████╗██╗  ██╗████████╗</span><br><span class="line">  ████╗  ██║██╔════╝╚██╗██╔╝╚══██╔══╝</span><br><span class="line">  ██╔██╗ ██║█████╗   ╚███╔╝    ██║</span><br><span class="line">  ██║╚██╗██║██╔══╝   ██╔██╗    ██║</span><br><span class="line">  ██║ ╚████║███████╗██╔╝ ██╗   ██║</span><br><span class="line">  ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝   ╚═╝</span><br><span class="line">========================================</span><br><span class="line">NexT version 8.12.3</span><br><span class="line">Documentation: https://theme-next.js.org</span><br><span class="line">========================================</span><br><span class="line">hexo: 6.2.0</span><br><span class="line">hexo-cli: 4.3.0</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>如果安装完成之后，有依赖包没有安装全可以使用<code>npm update</code>进行更新。</p><h1 id="更新配置"><a href="#更新配置" class="headerlink" title="更新配置"></a>更新配置</h1><h2 id="更新Hexo配置文件"><a href="#更新Hexo配置文件" class="headerlink" title="更新Hexo配置文件"></a>更新Hexo配置文件</h2><p>对于Hexo的配置文件，基本上把各项内容从老的文件复制到新的就行了。最后的deploy节点如果使用了baidu收录的记得用以下格式：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://xxxxxxx.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">baidu_url_submitter</span></span><br></pre></td></tr></table></figure><h2 id="更新Next配置文件"><a href="#更新Next配置文件" class="headerlink" title="更新Next配置文件"></a>更新Next配置文件</h2><p>对于Next的配置文件，以下就是一项项研究的漫漫长路了。<br>注：旧博文中并没有按照配置文件顺序来编写配置点，这篇文章中由于需要把旧的配置文件一项项更新到新的配置文件中，所以是按照配置文件顺序编写的配置点。</p><h3 id="文件位置和名称"><a href="#文件位置和名称" class="headerlink" title="文件位置和名称"></a>文件位置和名称</h3><p>安装完新主题之后，新版的配置文件不再是另外放在<code>_data/</code>下了，而是可以直接放在主文件夹下，不过文件名称需要按照<code>_config.[name].yml</code>的方式命名，如我使用的是Next主题，那么文件名就是<code>_config.next.yml</code>。</p><p>对比了一下老的配置文件和新的配置文件，区别还是挺大的，所以准备复制一份默认的配置文件，然后再把原有配置项一个个进去修改。</p><p>复制默认配置文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm安装</span></span><br><span class="line">$ <span class="built_in">cp</span> node_modules/hexo-theme-next/_config.yml _config.next.yml</span><br><span class="line"><span class="comment"># Git安装</span></span><br><span class="line">$ <span class="built_in">cp</span> themes/next/_config.yml _config.next.yml</span><br></pre></td></tr></table></figure><h3 id="定制样式"><a href="#定制样式" class="headerlink" title="定制样式"></a>定制样式</h3><p>一些个性化的样式可以修改。<br>需要把原来的<code>.swig</code>文件后缀改成<code>.njk</code>。</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="attr">postBodyEnd:</span> <span class="string">source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="attr">footer:</span> <span class="string">source/_data/footer.njk</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></span><br></pre></td></tr></table></figure><p>其中<code>footer.swig</code>为浏览器标签做的个性化需要在配置文件中额外加上：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title_trick:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">leave:</span> <span class="string">&quot;来啊快活啊~&quot;</span></span><br><span class="line">  <span class="attr">enter:</span> <span class="string">&quot;咚咚咚&quot;</span></span><br></pre></td></tr></table></figure><p>具体样式修改和代码可见旧博文中的<strong>定制样式</strong>部分。</p><h3 id="Valine评论（未解决）"><a href="#Valine评论（未解决）" class="headerlink" title="Valine评论（未解决）"></a>Valine评论（未解决）</h3><p>官方由于Valine不再开源并有可能的XSS漏洞，不再提供默认支持，配置项需要自己添加。详细说明可以见官方的<a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-next-valine">Github说明</a>。</p><p>我在安装的时候就出现了安装不了的问题，只能从Github上下载代码本地安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm <span class="built_in">ls</span> --depth=0</span><br><span class="line">hexo-site@0.0.0 D:\Study\BlogResources</span><br><span class="line">+-- @next-theme/utils@1.3.0 extraneous</span><br><span class="line">+-- hexo-baidu-url-submit@0.0.6</span><br><span class="line">+-- hexo-deployer-git@3.0.0</span><br><span class="line">+-- hexo-generator-archive@1.0.0</span><br><span class="line">+-- hexo-generator-category@1.0.0</span><br><span class="line">+-- hexo-generator-index@2.0.0</span><br><span class="line">+-- hexo-generator-tag@1.0.0</span><br><span class="line">+-- hexo-next-valine@2.1.0 -&gt; .\node_modules\_hexo-next-valine@2.1.0@hexo-next-valine  <span class="comment">#说明已安装</span></span><br><span class="line">+-- hexo-renderer-ejs@2.0.0</span><br><span class="line">+-- hexo-renderer-marked@5.0.0</span><br><span class="line">+-- hexo-renderer-stylus@2.1.0</span><br><span class="line">+-- hexo-server@3.0.0</span><br><span class="line">+-- hexo-theme-landscape@0.0.3</span><br><span class="line">+-- hexo-theme-next@8.12.3</span><br><span class="line">`-- hexo@6.2.0</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>安装之后尝试配置：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Multiple Comment System Support</span></span><br><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Available values: tabs | buttons</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">tabs</span></span><br><span class="line">  <span class="comment"># Choose a comment system to be displayed by default.</span></span><br><span class="line">  <span class="comment"># Available values: disqus | disqusjs | changyan | livere | gitalk | utterances</span></span><br><span class="line">  <span class="attr">active:</span> <span class="string">valine</span></span><br></pre></td></tr></table></figure><p>以及</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Valine</span></span><br><span class="line"><span class="comment"># For more information: https://valine.js.org, https://github.com/xCss/Valine</span></span><br><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appid:</span> <span class="string">...</span></span><br><span class="line">  <span class="attr">appkey:</span> <span class="string">...</span></span><br><span class="line">  <span class="attr">serverURLs:</span> <span class="comment"># When the custom domain name is enabled, fill it in here</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">写点什么吧</span> <span class="string">&gt;</span> <span class="string">&lt;</span> <span class="comment"># comment box placeholder</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># gravatar style</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># Custom comment header</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># pagination size</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors&#x27; for counter compatibility. Article reading statistic https://valine.js.org/visitor.html</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># If false, comment count will only be displayed in post page, not in home page</span></span><br><span class="line">  <span class="attr">recordIP:</span> <span class="literal">false</span> <span class="comment"># Whether to record the commenter IP</span></span><br></pre></td></tr></table></figure><p>生成出来的博文并没有Valine的Tab页，不知道什么原因。</p><h3 id="畅言评论"><a href="#畅言评论" class="headerlink" title="畅言评论"></a>畅言评论</h3><p>到<a target="_blank" rel="noopener" href="https://changyan.kuaizhan.com/">畅言</a>官网免费注册一个app，然后再开启并填入appid和appkey即可。</p><p>太丑！设置完我就放弃了。</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="attr">active:</span> <span class="string">changyan</span></span><br><span class="line"><span class="comment"># Changyan</span></span><br><span class="line"><span class="comment"># For more information: https://changyan.kuaizhan.com</span></span><br><span class="line"><span class="attr">changyan:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appid:</span> <span class="string">...</span></span><br><span class="line">  <span class="attr">appkey:</span> <span class="string">...</span></span><br></pre></td></tr></table></figure><h3 id="GitTalk-x2F-Utterances评论"><a href="#GitTalk-x2F-Utterances评论" class="headerlink" title="GitTalk&#x2F;Utterances评论"></a>GitTalk&#x2F;Utterances评论</h3><p>利用GitHub Issue实现的评论机制。这里我选用了<a target="_blank" rel="noopener" href="https://utteranc.es/">Utterances</a>，设置比较简单。</p><p>首先到Github创建一个新的公开项目作为评论的仓库，然后在仓库安装<a target="_blank" rel="noopener" href="https://github.com/apps/utterances">utterances app</a>。安装完成之后将你的用户名+仓库名填写到配置文件中即可：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">zhaomin6666/BlogUtterances</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">title</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure><h3 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h3><p>继续尝试live2d，新版本的看板娘官方的配置是写在<code>head.njk</code>里，也就是上面的定制样式里面，需要自己去找实现的<code>autoload.js</code>。尝试了一下官方提供的实例：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>将代码写到<code>head.njk</code>然后开启定制样式：<br><code>custom_file_path: head: source/_data/head.njk</code><br>打开页面查看发现有资源加载不出来T T</p><p>尝试用以前的插件方式安装，使用<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">hexo-helper-live2d</a>。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save hexo-helper-live2d</span><br><span class="line">// 挑选一个自己喜欢的模型下载</span><br><span class="line">$ cnpm install live2d-widget-model-hijiki</span><br></pre></td></tr></table></figure><p>新增hexo的config配置：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># live2d</span></span><br><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">log:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-hijiki</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">150</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure><p>live2d和不蒜子统计统计貌似依然存在兼容性问题，有些时候两个的显示会出现异常。</p><h3 id="MathJax支持问题（未解决）"><a href="#MathJax支持问题（未解决）" class="headerlink" title="MathJax支持问题（未解决）"></a>MathJax支持问题（未解决）</h3><p>由于类Latex格式书写的数学公式中有<code>_</code>,<code>&#123;</code>,<code>&#125;</code>等一些有语义冲突的符号，导致渲染时MathJax引擎认为公式有误所以不渲染，所以这里需要做一些调整。</p><p>更换Hexo的渲染引擎：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm uninstall hexo-renderer-marked --save</span><br><span class="line">$ cnpm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure><p>修改node_modules\kramed\lib\rules\inline.js中的第11行和第22行：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inline = &#123;</span><br><span class="line">  <span class="comment">//escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line">  <span class="attr">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line">    ...</span><br><span class="line">  <span class="comment">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line">  <span class="attr">em</span>: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>开启配置文件中的MathJax为True：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Default (false) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to true, it will load mathjax / katex script EVERY PAGE.</span></span><br><span class="line">  <span class="attr">every_page:</span> <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>依然无法正确展示部分公式。</p></div><footer class="post-footer"><div><div style="text-align:center;color:#ccc;font-size:14px">-------------　　　　本文结束　<i class="fa fa-flag"></i>　感谢阅读　　　　-------------</div></div><div class="reward-container"><div>请我一杯咖啡吧！</div> <button> 打赏</button><div class="post-reward"><div> <img src="https://myblog-1303447677.file.myqcloud.com/BlogFrame/wechatpay.png" alt=" 微信支付"> <span>微信支付</span></div><div> <img src="https://myblog-1303447677.file.myqcloud.com/BlogFrame/alipay.png" alt=" 支付宝"> <span>支付宝</span></div></div></div><div class="post-tags"><a href="/tags/Blog/" rel="tag"><i class="fa fa-tag"></i> Blog</a><a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a></div><div class="post-nav"><div class="post-nav-item"><a href="/LeetCode/Leet122_best-time-to-buy-and-sell-stock-ii/" rel="prev" title="LeetCode 122.Best Time To Buy And Sell Stock II"><i class="fa fa-angle-left"></i> LeetCode 122.Best Time To Buy And Sell Stock II</a></div><div class="post-nav-item"></div></div></footer></article></div><div class="comments utterances-container"></div></div></main><footer class="footer"><div class="footer-inner"><div class="copyright"> &copy; <span itemprop="copyrightYear">2023</span><span class="with-love"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">zm</span></div><div class="busuanzi-count"><span class="post-meta-item" id="busuanzi_container_site_uv"><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="总访客量"><span id="busuanzi_value_site_uv"></span></span></span><span class="post-meta-item" id="busuanzi_container_site_pv"><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="总访问量"><span id="busuanzi_value_site_pv"></span></span></span></div><div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动</div><script>var titleTime,OriginTitle=document.title;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="来啊快活啊~"+OriginTitle,clearTimeout(titleTime)):(document.title="咚咚咚"+OriginTitle,titleTime=setTimeout(function(){document.title=OriginTitle},2e3))})</script></div></footer><div class="back-to-top" role="button" aria-label="返回顶部"><i class="fa fa-arrow-up fa-lg"></i> <span>0%</span></div><noscript><div class="noscript-warning">Theme NexT works best with JavaScript enabled</div></noscript><script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script><script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script><script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script><script src="/js/third-party/math/mathjax.js"></script><script src="/lib/quicklink/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script><script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://zm6666.top/Hexo/HexoUpdateGuide/"}</script><script src="/js/third-party/quicklink.js"></script><script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"zhaomin6666/BlogUtterances","issue_term":"title","theme":"github-light"}</script><script src="/js/third-party/comments/utterances.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,log:!1,model:{jsonPath:"/live2dw/assets/hijiki.model.json"},display:{position:"right",width:150,height:300},mobile:{show:!0}})</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico">
+  <link rel="mask-icon" href="https://myblog-1303447677.file.myqcloud.com/BlogFrame/pig_32px_1271682_easyicon.net.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zm6666.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文采用 CC BY-NC-SA 4.0 协议，转载请注明出处。 很久没提交更新，打开博客一看，果然博客框架更新了很多东西。作为一个强迫症患者，在把这一两年内写的文章都提交之前，把框架统统更新一遍，简单记录一下内容。 配置项中和老版本一致的项目不再一一赘述，仅列举出配置项不同或者失效或者需要使用新的实现方式的功能。   更新 Node.js12$ node --versionv16.17.0 顺">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客升级6.2.0+Next主题升级8.12.3">
+<meta property="og:url" content="https://zm6666.top/Hexo/HexoUpdateGuide/index.html">
+<meta property="og:site_name" content="ZM666">
+<meta property="og:description" content="本文采用 CC BY-NC-SA 4.0 协议，转载请注明出处。 很久没提交更新，打开博客一看，果然博客框架更新了很多东西。作为一个强迫症患者，在把这一两年内写的文章都提交之前，把框架统统更新一遍，简单记录一下内容。 配置项中和老版本一致的项目不再一一赘述，仅列举出配置项不同或者失效或者需要使用新的实现方式的功能。   更新 Node.js12$ node --versionv16.17.0 顺">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-23T15:17:12.000Z">
+<meta property="article:modified_time" content="2022-08-24T12:08:42.926Z">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zm6666.top/Hexo/HexoUpdateGuide/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zm6666.top/Hexo/HexoUpdateGuide/","path":"Hexo/HexoUpdateGuide/","title":"Hexo博客升级6.2.0+Next主题升级8.12.3"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hexo博客升级6.2.0+Next主题升级8.12.3 | ZM666</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZM666</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0-Node-js"><span class="nav-number">1.</span> <span class="nav-text">更新 Node.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0-Hexo-%E5%92%8C%E4%B8%BB%E9%A2%98-NexT-%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">更新 Hexo 和主题 NexT 包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">更新配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0Hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">更新Hexo配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0Next%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">更新Next配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE%E5%92%8C%E5%90%8D%E7%A7%B0"><span class="nav-number">3.2.1.</span> <span class="nav-text">文件位置和名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E5%88%B6%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">定制样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valine%E8%AF%84%E8%AE%BA%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">3.2.3.</span> <span class="nav-text">Valine评论（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%85%E8%A8%80%E8%AF%84%E8%AE%BA"><span class="nav-number">3.2.4.</span> <span class="nav-text">畅言评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitTalk-x2F-Utterances%E8%AF%84%E8%AE%BA"><span class="nav-number">3.2.5.</span> <span class="nav-text">GitTalk&#x2F;Utterances评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#live2d"><span class="nav-number">3.2.6.</span> <span class="nav-text">live2d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MathJax%E6%94%AF%E6%8C%81%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">3.2.7.</span> <span class="nav-text">MathJax支持问题（未解决）</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="https://myblog-1303447677.file.myqcloud.com/BlogFrame/my-avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhaomin6666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhaomin6666" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lanmao_1029@163.com" title="E-Mail → mailto:lanmao_1029@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zm6666.top/Hexo/HexoUpdateGuide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://myblog-1303447677.file.myqcloud.com/BlogFrame/my-avatar.png">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZM666">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hexo博客升级6.2.0+Next主题升级8.12.3 | ZM666">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo博客升级6.2.0+Next主题升级8.12.3
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-23 23:17:12" itemprop="dateCreated datePublished" datetime="2022-08-23T23:17:12+08:00">2022-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-24 20:08:42" itemprop="dateModified" datetime="2022-08-24T20:08:42+08:00">2022-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><ul>
+<li>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议，转载请注明出处。</li>
+<li>很久没提交更新，打开博客一看，果然博客框架更新了很多东西。作为一个强迫症患者，在把这一两年内写的文章都提交之前，把框架统统更新一遍，简单记录一下内容。</li>
+<li>配置项中和老版本一致的项目不再一一赘述，仅列举出配置项不同或者失效或者需要使用新的实现方式的功能。</li>
+</ul>
+<hr>
+<h1 id="更新-Node-js"><a href="#更新-Node-js" class="headerlink" title="更新 Node.js"></a>更新 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node --version</span><br><span class="line">v16.17.0</span><br></pre></td></tr></table></figure>
+<p>顺带更新npm（需要到官网找到对应node版本的npm版本升级）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm --version</span><br><span class="line">v8.15.0</span><br></pre></td></tr></table></figure>
+
+<h1 id="更新-Hexo-和主题-NexT-包"><a href="#更新-Hexo-和主题-NexT-包" class="headerlink" title="更新 Hexo 和主题 NexT 包"></a>更新 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> 和主题 <a target="_blank" rel="noopener" href="https://github.com/next-theme/">NexT</a> 包</h1><p>由于我的版本和最新的差距太大，索性直接把整个文件夹铲了重新建站。<br><strong>注意：记得保存原仓库的副本，主要是<code>_post/</code>和<code>*.yml</code>文件。</strong><br>首先是重新安装最新的Hexo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-cli -g</span><br><span class="line">$ cnpm install hexo@6.2.0</span><br><span class="line">$ hexo version</span><br><span class="line">hexo: 6.2.0</span><br><span class="line">hexo-cli: 4.3.0</span><br></pre></td></tr></table></figure>
+<p>对于新版本的next主题可以使用npm方式直接安装了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+<p>当然，也可以使用git命令将主题下载到<code>themes/next</code>目录下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>安装完成之后找到文件夹下的<code>_config.yml</code>，修改其中的主题为<code>theme: next</code>。此时，博客的next主题就安装成功了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  ==================================</span><br><span class="line">  ███╗   ██╗███████╗██╗  ██╗████████╗</span><br><span class="line">  ████╗  ██║██╔════╝╚██╗██╔╝╚══██╔══╝</span><br><span class="line">  ██╔██╗ ██║█████╗   ╚███╔╝    ██║</span><br><span class="line">  ██║╚██╗██║██╔══╝   ██╔██╗    ██║</span><br><span class="line">  ██║ ╚████║███████╗██╔╝ ██╗   ██║</span><br><span class="line">  ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝   ╚═╝</span><br><span class="line">========================================</span><br><span class="line">NexT version 8.12.3</span><br><span class="line">Documentation: https://theme-next.js.org</span><br><span class="line">========================================</span><br><span class="line">hexo: 6.2.0</span><br><span class="line">hexo-cli: 4.3.0</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>如果安装完成之后，有依赖包没有安装全可以使用<code>npm update</code>进行更新。</p>
+<h1 id="更新配置"><a href="#更新配置" class="headerlink" title="更新配置"></a>更新配置</h1><h2 id="更新Hexo配置文件"><a href="#更新Hexo配置文件" class="headerlink" title="更新Hexo配置文件"></a>更新Hexo配置文件</h2><p>对于Hexo的配置文件，基本上把各项内容从老的文件复制到新的就行了。最后的deploy节点如果使用了baidu收录的记得用以下格式：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://xxxxxxx.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">baidu_url_submitter</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="更新Next配置文件"><a href="#更新Next配置文件" class="headerlink" title="更新Next配置文件"></a>更新Next配置文件</h2><p>对于Next的配置文件，以下就是一项项研究的漫漫长路了。<br>注：旧博文中并没有按照配置文件顺序来编写配置点，这篇文章中由于需要把旧的配置文件一项项更新到新的配置文件中，所以是按照配置文件顺序编写的配置点。</p>
+<h3 id="文件位置和名称"><a href="#文件位置和名称" class="headerlink" title="文件位置和名称"></a>文件位置和名称</h3><p>安装完新主题之后，新版的配置文件不再是另外放在<code>_data/</code>下了，而是可以直接放在主文件夹下，不过文件名称需要按照<code>_config.[name].yml</code>的方式命名，如我使用的是Next主题，那么文件名就是<code>_config.next.yml</code>。</p>
+<p>对比了一下老的配置文件和新的配置文件，区别还是挺大的，所以准备复制一份默认的配置文件，然后再把原有配置项一个个进去修改。</p>
+<p>复制默认配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm安装</span></span><br><span class="line">$ <span class="built_in">cp</span> node_modules/hexo-theme-next/_config.yml _config.next.yml</span><br><span class="line"><span class="comment"># Git安装</span></span><br><span class="line">$ <span class="built_in">cp</span> themes/next/_config.yml _config.next.yml</span><br></pre></td></tr></table></figure>
+
+<h3 id="定制样式"><a href="#定制样式" class="headerlink" title="定制样式"></a>定制样式</h3><p>一些个性化的样式可以修改。<br>需要把原来的<code>.swig</code>文件后缀改成<code>.njk</code>。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="attr">postBodyEnd:</span> <span class="string">source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="attr">footer:</span> <span class="string">source/_data/footer.njk</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+<p>其中<code>footer.swig</code>为浏览器标签做的个性化需要在配置文件中额外加上：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title_trick:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">leave:</span> <span class="string">&quot;来啊快活啊~&quot;</span></span><br><span class="line">  <span class="attr">enter:</span> <span class="string">&quot;咚咚咚&quot;</span></span><br></pre></td></tr></table></figure>
+<p>具体样式修改和代码可见旧博文中的<strong>定制样式</strong>部分。</p>
+<h3 id="Valine评论（未解决）"><a href="#Valine评论（未解决）" class="headerlink" title="Valine评论（未解决）"></a>Valine评论（未解决）</h3><p>官方由于Valine不再开源并有可能的XSS漏洞，不再提供默认支持，配置项需要自己添加。详细说明可以见官方的<a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-next-valine">Github说明</a>。</p>
+<p>我在安装的时候就出现了安装不了的问题，只能从Github上下载代码本地安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm <span class="built_in">ls</span> --depth=0</span><br><span class="line">hexo-site@0.0.0 D:\Study\BlogResources</span><br><span class="line">+-- @next-theme/utils@1.3.0 extraneous</span><br><span class="line">+-- hexo-baidu-url-submit@0.0.6</span><br><span class="line">+-- hexo-deployer-git@3.0.0</span><br><span class="line">+-- hexo-generator-archive@1.0.0</span><br><span class="line">+-- hexo-generator-category@1.0.0</span><br><span class="line">+-- hexo-generator-index@2.0.0</span><br><span class="line">+-- hexo-generator-tag@1.0.0</span><br><span class="line">+-- hexo-next-valine@2.1.0 -&gt; .\node_modules\_hexo-next-valine@2.1.0@hexo-next-valine  <span class="comment">#说明已安装</span></span><br><span class="line">+-- hexo-renderer-ejs@2.0.0</span><br><span class="line">+-- hexo-renderer-marked@5.0.0</span><br><span class="line">+-- hexo-renderer-stylus@2.1.0</span><br><span class="line">+-- hexo-server@3.0.0</span><br><span class="line">+-- hexo-theme-landscape@0.0.3</span><br><span class="line">+-- hexo-theme-next@8.12.3</span><br><span class="line">`-- hexo@6.2.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>安装之后尝试配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Multiple Comment System Support</span></span><br><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Available values: tabs | buttons</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">tabs</span></span><br><span class="line">  <span class="comment"># Choose a comment system to be displayed by default.</span></span><br><span class="line">  <span class="comment"># Available values: disqus | disqusjs | changyan | livere | gitalk | utterances</span></span><br><span class="line">  <span class="attr">active:</span> <span class="string">valine</span></span><br></pre></td></tr></table></figure>
+
+<p>以及</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Valine</span></span><br><span class="line"><span class="comment"># For more information: https://valine.js.org, https://github.com/xCss/Valine</span></span><br><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appid:</span> <span class="string">...</span></span><br><span class="line">  <span class="attr">appkey:</span> <span class="string">...</span></span><br><span class="line">  <span class="attr">serverURLs:</span> <span class="comment"># When the custom domain name is enabled, fill it in here</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">写点什么吧</span> <span class="string">&gt;</span> <span class="string">&lt;</span> <span class="comment"># comment box placeholder</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># gravatar style</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># Custom comment header</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># pagination size</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors&#x27; for counter compatibility. Article reading statistic https://valine.js.org/visitor.html</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># If false, comment count will only be displayed in post page, not in home page</span></span><br><span class="line">  <span class="attr">recordIP:</span> <span class="literal">false</span> <span class="comment"># Whether to record the commenter IP</span></span><br></pre></td></tr></table></figure>
+
+<p>生成出来的博文并没有Valine的Tab页，不知道什么原因。</p>
+<h3 id="畅言评论"><a href="#畅言评论" class="headerlink" title="畅言评论"></a>畅言评论</h3><p>到<a target="_blank" rel="noopener" href="https://changyan.kuaizhan.com/">畅言</a>官网免费注册一个app，然后再开启并填入appid和appkey即可。</p>
+<p>太丑！设置完我就放弃了。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="attr">active:</span> <span class="string">changyan</span></span><br><span class="line"><span class="comment"># Changyan</span></span><br><span class="line"><span class="comment"># For more information: https://changyan.kuaizhan.com</span></span><br><span class="line"><span class="attr">changyan:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appid:</span> <span class="string">...</span></span><br><span class="line">  <span class="attr">appkey:</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="GitTalk-x2F-Utterances评论"><a href="#GitTalk-x2F-Utterances评论" class="headerlink" title="GitTalk&#x2F;Utterances评论"></a>GitTalk&#x2F;Utterances评论</h3><p>利用GitHub Issue实现的评论机制。这里我选用了<a target="_blank" rel="noopener" href="https://utteranc.es/">Utterances</a>，设置比较简单。</p>
+<p>首先到Github创建一个新的公开项目作为评论的仓库，然后在仓库安装<a target="_blank" rel="noopener" href="https://github.com/apps/utterances">utterances app</a>。安装完成之后将你的用户名+仓库名填写到配置文件中即可：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">zhaomin6666/BlogUtterances</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">title</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h3><p>继续尝试live2d，新版本的看板娘官方的配置是写在<code>head.njk</code>里，也就是上面的定制样式里面，需要自己去找实现的<code>autoload.js</code>。尝试了一下官方提供的实例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>将代码写到<code>head.njk</code>然后开启定制样式：<br><code>custom_file_path: head: source/_data/head.njk</code><br>打开页面查看发现有资源加载不出来T T</p>
+<p>尝试用以前的插件方式安装，使用<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">hexo-helper-live2d</a>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save hexo-helper-live2d</span><br><span class="line">// 挑选一个自己喜欢的模型下载</span><br><span class="line">$ cnpm install live2d-widget-model-hijiki</span><br></pre></td></tr></table></figure>
+<p>新增hexo的config配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># live2d</span></span><br><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">log:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-hijiki</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">150</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>live2d和不蒜子统计统计貌似依然存在兼容性问题，有些时候两个的显示会出现异常。</p>
+<h3 id="MathJax支持问题（未解决）"><a href="#MathJax支持问题（未解决）" class="headerlink" title="MathJax支持问题（未解决）"></a>MathJax支持问题（未解决）</h3><p>由于类Latex格式书写的数学公式中有<code>_</code>,<code>&#123;</code>,<code>&#125;</code>等一些有语义冲突的符号，导致渲染时MathJax引擎认为公式有误所以不渲染，所以这里需要做一些调整。</p>
+<p>更换Hexo的渲染引擎：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm uninstall hexo-renderer-marked --save</span><br><span class="line">$ cnpm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+
+<p>修改node_modules\kramed\lib\rules\inline.js中的第11行和第22行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inline = &#123;</span><br><span class="line">  <span class="comment">//escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line">  <span class="attr">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line">    ...</span><br><span class="line">  <span class="comment">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line">  <span class="attr">em</span>: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>开启配置文件中的MathJax为True：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Default (false) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to true, it will load mathjax / katex script EVERY PAGE.</span></span><br><span class="line">  <span class="attr">every_page:</span> <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>依然无法正确展示部分公式。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-flag"></i>　感谢阅读　　　　-------------</div>
+    
+</div>
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    打赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://myblog-1303447677.file.myqcloud.com/BlogFrame/wechatpay.png" alt=" 微信支付">
+        <span>微信支付</span>
+      </div>
+      <div>
+        <img src="https://myblog-1303447677.file.myqcloud.com/BlogFrame/alipay.png" alt=" 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Blog/" rel="tag"><i class="fa fa-tag"></i> Blog</a>
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/LeetCode/Leet122_best-time-to-buy-and-sell-stock-ii/" rel="prev" title="LeetCode 122.Best Time To Buy And Sell Stock II">
+                  <i class="fa fa-angle-left"></i> LeetCode 122.Best Time To Buy And Sell Stock II
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zm</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+  <script>
+    var OriginTitle = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        document.title = '来啊快活啊~' + OriginTitle;
+        clearTimeout(titleTime);
+      } else {
+        document.title = '咚咚咚' + OriginTitle;
+        titleTime = setTimeout(function() {
+          document.title = OriginTitle;
+        }, 2000);
+      }
+    });
+  </script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="/lib/quicklink/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://zm6666.top/Hexo/HexoUpdateGuide/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"zhaomin6666/BlogUtterances","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
