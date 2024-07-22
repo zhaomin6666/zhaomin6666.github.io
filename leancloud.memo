@@ -1,2 +1,16 @@
 [
+{"title":"斯坦福大学 机器学习 吴恩达 第一周","url":"/人工智能AI/Machine-learning-week1/"},
+{"title":"Kafka使用指南1——简介和安装、原生命令行的使用","url":"/分布式框架Distribute-framework/How-to-use-Kafka-1-InstallAndIntroduction-NativeUse/"},
+{"title":"Kafka使用指南2——Java客户端以及Spring集成","url":"/分布式框架Distribute-framework/How-to-use-Kafka-2-Java_Client/"},
+{"title":"Kafka使用指南3——Kafka集群架构设计","url":"/分布式框架Distribute-framework/How-to-use-Kafka-3-Cluster/"},
+{"title":"Kafka使用指南4——Kafka日志索引分析","url":"/分布式框架Distribute-framework/How-to-use-Kafka-4-Log_Index/"},
+{"title":"《剑指Offer》数组中的重复数字","url":"/剑指Offer/CodeExToOffer-ex3/"},
+{"title":"《剑指Offer》替换空格","url":"/剑指Offer/CodeExToOffer-ex5/"},
+{"title":"《剑指Offer》从尾到头打印链表","url":"/剑指Offer/CodeExToOffer-ex6/"},
+{"title":"Hexo博客升级7.0.0+Next主题升级8.19.1","url":"/博客Blog/HexoUpdateGuide/"},
+{"title":"LeetCode 2. Add Two Numbers","url":"/算法Algorithm/Leet2_add-two-numbers/"},
+{"title":"LeetCode 3. Longest Substring Without Repeating Characters","url":"/算法Algorithm/Leet3_longest-substring-without-repeating-characters/"},
+{"title":"LeetCode 4. Median Of Two Sorted Arrays","url":"/算法Algorithm/Leet4_median-of-two-sorted-arrays/"},
+{"title":"LeetCode 5. Longest Palindromic Substring","url":"/算法Algorithm/Leet5_longest-palindromic-substring/"},
+{"title":"LeetCode小心得","url":"/算法Algorithm/LeetCode/"},
 ]
